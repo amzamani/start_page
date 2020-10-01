@@ -1,83 +1,270 @@
-let task = document.querySelector('.task_val');
-let duration = document.querySelector('.duration');
-let start_time = document.querySelector('.start_time');
-let task_list = document.querySelector('.todolist');
-function dashboard(name, id) {
-	document.querySelector('.username').innerHTML = name;
-	let add_btn = document.querySelector('.add_btn');
-	add_btn.addEventListener('click', add_tasks(id));
-	add_default_time();
+// Define UI Vars
+const form = document.querySelector('#task-form');
+const taskList = document.querySelector('.collection');
+const clearBtn = document.querySelector('.clear-tasks');
+const filter = document.querySelector('#filter');
+const taskInput = document.querySelector('#task');
+const timeInput = document.querySelector('#time');
+const startBtn = document.querySelector('.start-tasks');
+
+// Load all event listeners
+loadEventListeners();
+
+// Load all event listeners
+function loadEventListeners() {
+	// DOM Load event
+	document.addEventListener('DOMContentLoaded', getTasks);
+	// Add task event
+	form.addEventListener('submit', addTask);
+	// Remove task event
+	taskList.addEventListener('click', removeTask);
+	// Clear task event
+	clearBtn.addEventListener('click', clearTasks);
+	// Filter tasks event
+	filter.addEventListener('keyup', filterTasks);
+	// Start tasks
+	startBtn.addEventListener('click', startTasks);
 }
-function add_tasks(id,e) {
-	let name_str = document.querySelector('.task_val').value;
-	let time = document.querySelector('.start_time').value;
-	let duration = document.querySelector('.duration').value;
-	if (name_str === '' || time === '' || duration === ''||time==0) {
-		alert('These fields are neccessary');
+
+// Get Tasks from LS
+function getTasks() {
+	let tasks;
+	if (localStorage.getItem('tasks') === null) {
+		tasks = [];
 	} else {
-		let li = document.createElement('li');
-		li.innerHTML = `
-            <div class="task_name">${name_str}</div>
-            <div class="task_duration">${duration}</div>
-            <div class="task_start_time">${time}</div>
-            <i class="fas fa-minus-circle remove"></i>
-        `;
-		li.classList.add('tasks');
+		tasks = JSON.parse(localStorage.getItem('tasks'));
+	}
 
-		db.collection(`users/${id}`)
-		
-        task_list.appendChild(li);
-        clear_form();
-        document.querySelector('.start_time').value = convertko(time, duration);
+	tasks.forEach(function (task) {
+		// Create li element
+		const li = document.createElement('li');
+		// Add class
+		li.className = 'collection-item';
+		let p = document.createElement('p');
+		p.innerHTML = `${task.time}`;
+		// Create text node and append to li
+		li.appendChild(document.createTextNode(task.task));
+		li.appendChild(p);
+		// Create new link element
+		const link = document.createElement('a');
+		// Add class
+		link.className = 'delete-item secondary-content';
+		// Add icon html
 
+		link.innerHTML = `<img src="img/ant-design_close-circle-twotone.svg" alt="">`;
+
+		// Append the link to li
+		li.appendChild(link);
+
+		// Append li to ul
+		taskList.appendChild(li);
+	});
+}
+
+// Add Task
+function addTask(e) {
+	if (taskInput.value === '' || timeInput.value === '') {
+		alert('Add a task');
+	} else {
+		// Create li element
+		const li = document.createElement('li');
+		// Add class
+		li.className = 'collection-item';
+		// Create text node and append to li
+		let p = document.createElement('p');
+		p.innerHTML = `${timeInput.value}`;
+		li.appendChild(document.createTextNode(taskInput.value));
+		li.appendChild(p);
+		// Create new link element
+		const link = document.createElement('a');
+		// Add class
+		link.className = 'delete-item secondary-content';
+		// Add icon html
+		link.innerHTML = `<img src="img/ant-design_close-circle-twotone.svg" alt="">`;
+		// Append the link to li
+		li.appendChild(link);
+
+		// Append li to ul
+		taskList.appendChild(li);
+
+		// Store in LS
+		storeTaskInLocalStorage(taskInput.value, timeInput.value);
+
+		// Clear input
+		taskInput.value = '';
+		timeInput.value = '';
+
+		e.preventDefault();
+	}
+}
+
+// Store Task
+function storeTaskInLocalStorage(task, time) {
+	let tasks;
+	if (localStorage.getItem('tasks') === null) {
+		tasks = [];
+	} else {
+		tasks = JSON.parse(localStorage.getItem('tasks'));
+	}
+
+	tasks.push({ task, time });
+
+	localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+// Remove Task
+function removeTask(e) {
+	if (e.target.parentElement.classList.contains('delete-item')) {
+		if (confirm('Are You Sure?')) {
+			e.target.parentElement.parentElement.remove();
+
+			// Remove from LS
+			console.log(e.target.parentElement.parentElement.firstChild);
+			removeTaskFromLocalStorage(
+				e.target.parentElement.parentElement.firstChild
+			);
+		}
+	}
+}
+
+// Remove from LS
+function removeTaskFromLocalStorage(taskItem) {
+	let tasks;
+	if (localStorage.getItem('tasks') === null) {
+		tasks = [];
+	} else {
+		tasks = JSON.parse(localStorage.getItem('tasks'));
+	}
+	//   console.log(tasks);
+	tasks.forEach(function (task, index) {
+		console.log(taskItem.textContent + 's');
+		//   console.log(task,typeof(task))
+		if (taskItem.textContent === task.task) {
+			console.log(task);
+			tasks.splice(index, 1);
+		}
+	});
+
+	localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+// Clear Tasks
+function clearTasks() {
+	// taskList.innerHTML = '';
+
+	// Faster
+	if (confirm('This will erase all tasks')) {
+		while (taskList.firstChild) {
+			taskList.removeChild(taskList.firstChild);
+		}
+
+		// https://jsperf.com/innerhtml-vs-removechild
+
+		// Clear from LS
+		clearTasksFromLocalStorage();
+	}
+}
+
+// Clear Tasks from LS
+
+function clearTasksFromLocalStorage() {
+	let tasks1 = [];
+	localStorage.setItem('tasks', JSON.stringify(tasks1));
+}
+
+// Filter Tasks
+function filterTasks(e) {
+	const text = e.target.value.toLowerCase();
+
+	document.querySelectorAll('.collection-item').forEach(function (task) {
+		const item = task.firstChild.textContent;
+		if (item.toLowerCase().indexOf(text) != -1) {
+			task.style.display = 'block';
+		} else {
+			task.style.display = 'none';
+		}
+	});
+}
+
+// Start Tasks
+function startTasks(e) {
+	if (taskList.childElementCount) {
+		let tasks;
+
+		tasks = JSON.parse(localStorage.getItem('tasks'));
+		let LALA = window.setInterval(function () {
+			let kk = 1;
+
+			if (kk) {
+				let duu = tasks[j].time;
+				let tuu = tasks[j].time;
+				tuu /= 20;
+				duu = 30;
+				let str = `So, what you are waiting for? Your task is to complete what you assigned to yourself ${
+					tasks[j].title
+				}. You have ${
+					tasks[j].time
+				} minutes to complete it
+                )}. I will remind you every ${duu} minutes to have a break and every ${tuu} minutes, I would give you a powerful quote. `;
+                speak_out(str);
+                
+				kk = 0;
+				check_for_single(tasks, j);
+				j++;
+				if (j == tasks.length) {
+					clearInterval(LALA);
+				}
+			}
+		}, 30000);
+	} else {
+		alert('There should be atleast one task.');
 	}
 	e.preventDefault();
 }
-function add_default_time() {
-	var today = new Date();
-	let time = today.getHours() + ':' + today.getMinutes();
-	for (let i = 0; i < time.length; i++) {
-		if (time[i] == ':') {
-			if (i == 1) {
-				time.replace(/^/, '0');
-			} else if (time.length == 4) {
-				time[3] = 0;
-				time += today.getMinutes();
-			}
-			break;
+
+function speak_out(str) {
+	var synth = window.speechSynthesis;
+	var inputTxt = str;
+	var pitchValue = 0.7;
+	var rateValue = 1.1;
+	var utterThis = new SpeechSynthesisUtterance(inputTxt);
+	utterThis.pitch = pitchValue;
+	utterThis.rate = rateValue;
+	synth.speak(utterThis);
+}
+// For Quotes
+function check_for_single(tasks, j) {
+	let duu = tasks[j].time;
+	duu/=20;
+	var chale_chalo=window.setInterval(() => {
+		let rand=Math.floor(Math.random()*(1600))
+		let str = `${quotes[rand].text}`;
+		str+=`You got ${tl} minutes left bro. Come on let's try to do it faster`
+		make_messages(str);
+		console.log(tl);
+		console.log(duu);
+		tl -= duu;
+		if(tl<=0)
+		{
+			let str=`Time is up.`;
+			make_messages(str);
+			clearInterval(chale_chalo);
 		}
-	}
-	document.querySelector('.start_time').value = time;
+
+	}, duu*60*1000);
+	// let end_time=
 }
 
-function clear_form(){
-    document.querySelector('.task_val').value="";
-	document.querySelector('.start_time').value="";
-	document.querySelector('.duration').value=0;
-}
+// for quotes
 
+let quotes=[];
+fetch('https://type.fit/api/quotes')
+	.then(function (response) {
+		return response.json();
+	})
+	.then(function (data) {
+		quotes = data;
 
-function convertko(hours, duu) {
-	let hour = '';
-	let min = '';
-	for (let i = 0; i < hours.length; i++) {
-		if (hours[i] === ':') {
-			hour = hours.slice(0, i);
-			min = hours.slice(i + 1, hours.length);
-			break;
-		}
-	}
-	let hr = parseInt(hour);
-	let hrs = parseInt(hour);
-	let mn = parseInt(min);
-	let mns = parseInt(min);
-	hr += Math.floor(duu / 60);
-	mn += duu % 60;
-	if (mn > 60) {
-		mn -= 60;
-		hr++;
-	}
-	let fr = hr.toString();
-	let fp = mn.toString();
-	return fr + ':' + fp;
-}
+		console.log(data);
+	});
+	

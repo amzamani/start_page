@@ -1,5 +1,7 @@
-db.collection('cafes').where("city","==","manchester").orderBy("name").get().then((snapshot)=>{
-     snapshot.docs.forEach(doc=>{
-        renderCafe(doc);
-     });
- });
+var send = document.getElementById("send1")
+
+send.addEventListener("click",function(e){
+    e.preventDefault();
+    var title = document.querySelector(".title").value;
+    console.log(title);
+});
