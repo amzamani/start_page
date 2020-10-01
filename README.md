@@ -8,3 +8,6 @@ mypage.html is the html file we would display on the new page, any scripts go do
 ## Features to be added 
 - [ ] google keep links save with pop-up
 - [ ] news render in tabs flexbox
+- [ ] Authentification through firebase
+- [ ] Task scheduler
+- [ ] Brainstorming section

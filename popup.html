@@ -4,9 +4,43 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
+		
+ 		<style>
+             .container{
+				margin:1% 1% 1% 1%;  
+                width:195px;
+				border-radius: 2%;
+				box-shadow:5px 5px #888888;
+   				-ms-box-sizing:content-box;
+    			-moz-box-sizing:content-box;
+    			box-sizing:content-box;
+    			-webkit-box-sizing:content-box;
+			 }          
+		</style>
 	</head>
 	<body>
-		<button>Hey there</button>
-        <script src="popup.js"></script>
+		<div style="transform:translate(80%,-5%);">
+	       <div class="container">
+			<form action="www.wikipedia.com">			<h4 style="margin:2% 0% 0%">Url:</h4>
+				<input style="margin:0.5% 0% 0% 1%" type="url" class="title" placeholder="Add url">
+				<h4 style="margin:1% 0% 0%">Title</h4>
+				<input style="margin:0.5% 0% 0% 1%" type="text" placeholder="Add title here">	
+				<h4 style="margin:1% 0% 0%">Description</h4>
+				<input style="margin:0.5% 0% 0% 1%" type="text">
+				<h4 style="margin:1% 0% 0%">Tags:</h4>
+				<input style="margin:0.5% 0% 1%" type="text">
+				<div>
+					<button class="submit" id="send1">Add</button>
+				</div>
+			</form>
+		   </div>
+		</div>	
+		
+		<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-database.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-firestore.js"></script>   
+		<script src="popup.js"></script>
+		<!-- <script src="index.js"></script>		 -->
     </body>
 </html>
