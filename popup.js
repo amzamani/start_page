@@ -16,9 +16,9 @@ send.addEventListener("click", function (e) {
     var url = document.querySelector(".url").value;
     var desc = document.querySelector(".description").value;
     var tags = t[0].chipsData;
+    // popup();
     store(title, desc, url,tags);
 });
-
 
 function store(title, desc, url,tags) {
     let blogs;
@@ -32,4 +32,6 @@ function store(title, desc, url,tags) {
     blogs.push({ title, desc, url,tags});
 
     localStorage.setItem('blogs', JSON.stringify(blogs));
+
+
 };

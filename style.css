@@ -20,3 +20,10 @@
 	  opacity: 1;
 	}
   }
+
+  .cccc{
+	display: flex;
+}
+#blogdisplay{
+	padding-left:2rem;
+}
