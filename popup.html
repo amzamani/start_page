@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
+		<title>Document</title>=
 		
  		<style>
              .container{
@@ -14,33 +14,65 @@
    				-ms-box-sizing:content-box;
     			-moz-box-sizing:content-box;
     			box-sizing:content-box;
-    			-webkit-box-sizing:content-box;
-			 }          
+    			-webkit-box-sizing:content-box; */
+			 }    
+
+             input:focus,textarea:focus{
+				outline:none;
+			 }
+
+             .enter{
+				padding:5px 0px 5px 0px;
+				
+				
+				 width:338px;
+				 margin:0px 0px 0px 2px;
+			 }
+
+			 .textenter{
+				 padding:10px 0px 10px 0px;
+		
+				 width:338px;
+			
+			 }
 		</style>
+
+        <link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <!-- <script type="text/javascript">
+			function resizeMe()
+			{
+				height = document.getElementById("content").offsetHeight;
+				width  = document.getElementById("content").offsetWidth;
+				self.resizeTo(width+20, height+100);
+			}
+			</script> -->
 	</head>
 	<body>
-		<div style="transform:translate(80%,-5%);">
-	       <div class="container">
-			<form action="www.wikipedia.com">			<h4 style="margin:2% 0% 0%">Url:</h4>
-				<input style="margin:0.5% 0% 0% 1%" type="url" class="title" placeholder="Add url">
-				<h4 style="margin:1% 0% 0%">Title</h4>
-				<input style="margin:0.5% 0% 0% 1%" type="text" placeholder="Add title here">	
-				<h4 style="margin:1% 0% 0%">Description</h4>
-				<input style="margin:0.5% 0% 0% 1%" type="text">
-				<h4 style="margin:1% 0% 0%">Tags:</h4>
-				<input style="margin:0.5% 0% 1%" type="text">
-				<div>
-					<button class="submit" id="send1">Add</button>
+		<div id="notification">
+	       <div class="container1">
+	
+			<form action="mypage.html" method="POST">
+				 <div class="enter"><input class="url" style="margin:0% 0% 0% 1%" type="url" placeholder="Add url"></div>	
+				 <div class="enter"><input class="title" style="margin:0% 0% 0% 1%" type="text" placeholder="Add title here"></div>
+				 <div class="textenter"><input class="description" style="margin:0% 0% 0% 1%; resize:none;" placeholder="Description"></textarea></div>	
+	
+				 <!--chips--> 
+				 <div class="chips chips-placeholder">
+				 </div>
+
+				 <div style="background-color:#888888;">  
+					<button id="send1"><img id="send" src="/img/ant-design_send-outlined.svg"/></button>
 				</div>
+                  				 
 			</form>
-		   </div>
-		</div>	
-		
-		<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-database.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-firestore.js"></script>   
+		   </div>		
+			
+		</div>
+		<script type="text/javascript" src="/js/materialize.min.js"></script>	   
 		<script src="popup.js"></script>
-		<!-- <script src="index.js"></script>		 -->
+
     </body>
 </html>
