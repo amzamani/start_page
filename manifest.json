@@ -10,5 +10,5 @@
 	"chrome_url_overrides": {
 		"newtab": "myPage.html"
 	},
-	"content_security_policy": "script-src script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com https://ajax.googleapis.com https://stackpath.bootstrapcdn.com https://maxcdn.bootstrapcdn.com object-src 'self'"
+	"content_security_policy": "script-src script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com https://ajax.googleapis.com  'self'"
 }

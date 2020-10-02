@@ -7,7 +7,10 @@ mypage.html is the html file we would display on the new page, any scripts go do
 
 ## Features to be added 
 - [ ] google keep links save with pop-up
-- [ ] news render in tabs flexbox
+- [ ] put fav and popular pages with search bar on top
+- [ ] <s>news render in tabs flexbox </s>
 - [ ] Authentification through firebase
 - [ ] Task scheduler
 - [ ] Brainstorming section
+
+- [ ] may use local storage for todo and task schedule
