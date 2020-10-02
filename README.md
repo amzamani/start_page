@@ -6,11 +6,11 @@ For loading the extension onto the chrome, just clone the repo and go to chrome-
 mypage.html is the html file we would display on the new page, any scripts go down near end of </body>. Do not edit manifest.json.
 
 ## Features to be added 
-- [ ] google keep links save with pop-up
+- [ ] <s>link saver save with pop-up
 - [ ] put fav and popular pages with search bar on top
 - [ ] <s>news render in tabs flexbox </s>
-- [ ] Authentification through firebase
-- [ ] Task scheduler
+- [ ] <s>Task scheduler
 - [ ] Brainstorming section
 
-- [ ] may use local storage for todo and task schedule
+- [ ] <s>may use local storage for todo and task schedule
+##Screenshots of the working prototype
