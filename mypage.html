@@ -9,55 +9,46 @@
     
 </head>
 <body>
-    <div class="container login_signup">
-        <h4>Sign up</h4>
-        <br />
-        <form id="signup-form">
-                                <div class="input-field">
-                                    <input type="email" id="signup-email" required />
-                                    <label for="signup-email">Email address</label>
-                                </div>
-                                
-                                <div class="input-field">
-                                    <input type="text" id="signup-name" required />
-                                    <label for="signup-email">Name</label>
-                                </div>
-                                <div class="input-field">
-                                    <input type="password" id="signup-password" required />
-                                    <label for="signup-password">Choose password</label>
-                                </div>
-                                <button class="btn yellow darken-2 z-depth-0">Sign up</button>
-                            </form>
+    <h4>Sign up</h4>
+						<br />
+						<form id="signup-form">
+							<div class="input-field">
+								<input type="email" id="signup-email" required />
+								<label for="signup-email">Email address</label>
+							</div>
+							
+							<div class="input-field">
+								<input type="text" id="signup-name" required />
+								<label for="signup-email">Name</label>
+							</div>
+							<div class="input-field">
+								<input type="password" id="signup-password" required />
+								<label for="signup-password">Choose password</label>
+							</div>
+							<button class="btn yellow darken-2 z-depth-0">Sign up</button>
+						</form>
+					
+
+				<!-- LOGIN MODAL -->
+				
+						<h4>Login</h4>
+						<br />
+						<form id="login-form">
+							<div class="input-field">
+								<input type="email" id="login-email" required />
+								<label for="login-email">Email address</label>
+							</div>
+							<div class="input-field">
+								<input type="password" id="login-password" required />
+								<label for="login-password">Your password</label>
+							</div>
+							<button class="btn yellow darken-2 z-depth-0">Login</button>
+                        </form>
                         
-    
-                    <!-- LOGIN MODAL -->
-                    
-                            <h4>Login</h4>
-                            <br />
-                            <form id="login-form">
-                                <div class="input-field">
-                                    <input type="email" id="login-email" required />
-                                    <label for="login-email">Email address</label>
-                                </div>
-                                <div class="input-field">
-                                    <input type="password" id="login-password" required />
-                                    <label for="login-password">Your password</label>
-                                </div>
-                                <button class="btn yellow darken-2 z-depth-0">Login</button>
-                            </form>
-                            
-
-    </div>
     <div class="loader">
-        <p>
-            Checking.....
-            
-        </p>
-        <img src="img/497.gif" alt="">
-    </div>
-    <div class="container after_login">
-					  <a href="#" class="logout2">Logout</a>
 
+    </div>
+    <div class="container">
         <div class="header">
             <h1>Hey <span class="username"></span>, Let's Rock Today</h1>
         </div>
@@ -66,32 +57,23 @@
 
             </div>
             <div class="todo">
-                <div class="add_todo">
                     <h1 class="todo-heading">Add your Tasks</h1>
-                    <div class="input_fields">
-                        <input type="text" name="task" placeholder="Enter Your Task here">
-                        <div class="tooltip">
-                            <input type="time" name="" id="">
-                            <span class="tooltiptext">Enter Duration</span>
-                        </div>
-                        <button class="btn">Add</button>
+                    <input type="text" name="task" placeholder="Enter Your Task here">
+                    <div class="tooltip">
+                        <input type="time" name="" id="">
+                        <span class="tooltiptext">Enter Duration</span>
                     </div>
-                </div>
-                <ul class="todolist">
-
-                </ul>
                     
                 </div>
             </div>
-    </div>
+        </div>
 
-    </div>
-    <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-database.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-firestore.js"></script>
-
-	<script src="firebase.js"></script>
+	</div>
+	
+	<div>
+	   <ul id="blogdisplay">
+	   </ul>	
+	</div>
 
     <script src="index.js"></script>
 </body>
