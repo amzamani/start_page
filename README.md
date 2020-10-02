@@ -16,4 +16,8 @@ mypage.html is the html file we would display on the new page, any scripts go do
 
 
 ## Screenshots of the working prototype
-![alt text](https://github.com/abhi-824/start_page/master/start_page.JPG?raw=true)
+![alt text](https://github.com/abhi-824/start_page/blob/master/start_page.JPG?raw=true)
+
+![alt text](https://github.com/abhi-824/start_page/blob/master/start_page2.JPG?raw=true)
+
+![alt text](https://github.com/abhi-824/start_page/blob/master/start_day.JPG?raw=true)
