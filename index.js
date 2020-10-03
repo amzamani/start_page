@@ -19,13 +19,16 @@ console.log(blogs.length);
 if(blogs!=undefined&&blogs.length>0)
 {
 
-	var rem1 = document.querySelector('.delete1-from-main');
-	rem1.addEventListener('click', function () {
-		console.log("hel")
-		var title = this.parentElement.children[1].textContent;
-		this.parentElement.remove();
-		removeOneBlog(title);
-	});
+	var rem1 = document.querySelectorAll('.delete1-from-main');
+	for(let i=0;i<rem1.length;i++)
+	{
+		rem1[i].addEventListener('click', function () {
+			console.log("hel")
+			var title = this.parentElement.children[1].textContent;
+			this.parentElement.remove();
+			removeOneBlog(title);
+		});
+	}
 	
 	function removeOneBlog(title) {
 		let blogs;
