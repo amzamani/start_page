@@ -26,84 +26,70 @@
 							<div class="card-content">
 								<span class="card-title"> Saved Readings </span>
 							</div>
-							<div class="row">
-								<ul id="blogdisplay"></ul>
+							
+							<div class="input-field">
+								<input type="text" id="signup-name" required />
+								<label for="signup-email">Name</label>
 							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row add_tasks_ples">
-					<div class="col s9">
-						<div id="main" class="card">
-							<div class="card-content">
-								<span class="card-title">Task List</span>
-								<div class="row">
-									<form id="task-form">
-										<div class="input-field col s12">
-											<input type="text" name="task" id="task" />
-											<label for="task">New Task</label>
-										</div>
-	
-										<div class="input-field col s12">
-											<input type="number" name="time" id="time" />
-											<label for="time">Enter time(in min)</label>
-										</div>
-										<input type="submit" value="Add Task" class="btn" />
-									</form>
-								</div>
+							<div class="input-field">
+								<input type="password" id="signup-password" required />
+								<label for="signup-password">Choose password</label>
 							</div>
-							<div class="card-action">
-								<h5 id="task-title">Tasks</h5>
-								<div class="input-field col s12">
-									<input type="text" name="filter" id="filter" />
-									<label for="filter">Filter Tasks</label>
-								</div>
-								<ul class="collection"></ul>
-								<a href="#" class="clear-tasks btn black">Clear Tasks</a>
-								<a href="#" class="start-tasks btn btn-primary">Start the day</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="progress hidden">
-					<div class="indeterminate"></div>
-				</div>
-				<div class="row schedule hidden">
-					<div class="col s12">
-						<div class="card">
-							<div class="card-content">
-								<span class="card-title center">Your Schedule</span>
-								<div class="row">
-									<table class="highlight centered">
-										<thead>
-											<tr>
-												<th>Name</th>
-												<th>Start Time</th>
-												<th>End Time</th>
-											</tr>
-										</thead>
-										<tbody class="schedule_table"></tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<br />
-			<br />
-			<br />
-			<br />
-			<iframe
-				src="https://amzamani.github.io/news-feed/"
-				width="70%"
-				height="1000px"
-				frameborder="0"
-			></iframe>
-		</div>
-		<script type="text/javascript" src="js/materialize.min.js"></script>
+							<button class="btn yellow darken-2 z-depth-0">Sign up</button>
+						</form>
+					
 
-		<script src="index.js"></script>
-		<script src="popup.js"></script>
-	</body>
+				<!-- LOGIN MODAL -->
+				
+						<h4>Login</h4>
+						<br />
+						<form id="login-form">
+							<div class="input-field">
+								<input type="email" id="login-email" required />
+								<label for="login-email">Email address</label>
+							</div>
+							<div class="input-field">
+								<input type="password" id="login-password" required />
+								<label for="login-password">Your password</label>
+							</div>
+							<button class="btn yellow darken-2 z-depth-0">Login</button>
+                        </form>
+                        
+    <div class="loader">
+
+    </div>
+    <div class="container">
+        <div class="header">
+            <h1>Hey <span class="username"></span>, Let's Rock Today</h1>
+        </div>
+        <div class="wrapper">
+            <div class="news-grid">
+
+            </div>
+            <div class="todo">
+                    <h1 class="todo-heading">Add your Tasks</h1>
+                    <input type="text" name="task" placeholder="Enter Your Task here">
+                    <div class="tooltip">
+                        <input type="time" name="" id="">
+                        <span class="tooltiptext">Enter Duration</span>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+	</div>
+	
+    <div>
+    <span style="width:5rem;" class="chips chips-placeholder"></span>
+	<button id="search-button"><img id="send" src="/img/ant-design_send-outlined.svg"/></button>	
+    </div>
+	<div>
+			
+	   <ul id="blogdisplay">
+	   </ul>	
+	</div>
+    <script type="text/javascript" src="/js/materialize.min.js"></script>
+    <script src="index.js"></script>
+</body>
 </html>
