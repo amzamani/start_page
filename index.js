@@ -13,7 +13,7 @@ for (var p in blogs) {
 	newli.appendChild(sp);
 	list.appendChild(newli);
 }
-console.log(blogs.length);
+// console.log(blogs.length);
 if (blogs != undefined && blogs.length > 0) {
 	var rem1 = document.querySelectorAll('.delete1-from-main');
 	for (let i = 0; i < rem1.length; i++) {
