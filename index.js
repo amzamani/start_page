@@ -42,38 +42,16 @@ function removeOneBlog(title)
 			blogs.splice(index, 1);
 		}
 	});
-	var rem1 = document.querySelector('.delete1-from-main');
-	rem1.addEventListener('click', function () {
-		console.log("hel")
-		var title = this.parentElement.children[1].textContent;
-		this.parentElement.remove();
-		removeOneBlog(title);
-	});
-	
-	function removeOneBlog(title) {
-		let blogs;
-		if (localStorage.getItem('blogs') === null) {
-			blogs = [];
-		} else {
-			blogs = JSON.parse(localStorage.getItem('blogs'));
-		}
-		//   console.log(tasks);
-		blogs.forEach(function (blog, index) {
-			// console.log(title.textContent + 's');
-			//   console.log(task,typeof(task))
-			console.log(blog);
-			console.log(title);
-			if (blog.title === title) {
-				console.log('hey');
-				console.log(index);
-				blogs.splice(index, 1);
-			}
+	var rem1 = document.querySelectorAll('.delete1-from-main');
+	for(let i=0;i<rem1.length;i++)
+	{
+		rem1[i].addEventListener('click', function () {
+			console.log("hel")
+			var title = this.parentElement.children[1].textContent;
+			this.parentElement.remove();
+			removeOneBlog(title);
 		});
-		console.log(blogs);
-	
-		localStorage.setItem('blogs', JSON.stringify(blogs));
 	}
-}
 
 const tags  = document.querySelectorAll(".chips-placeholder");
    var t = M.Chips.init(tags,{placeholder:'add tag'});
